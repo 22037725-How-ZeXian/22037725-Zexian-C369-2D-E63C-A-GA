@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+ I declare that this code was written by me. 
+ I will not copy or allow others to copy my code. 
+ I understand that copying code is considered as plagiarism.
+ 
+ Student Name: HOW ZE XIAN
+ Student ID: 22037725
+ Class: C369-2D-E63C-A
+ Date/Time Last modified:
+    -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color:snow;
+        }
+        form{
+            margin: auto;
+            width: 25%;
+            border: 3px solid lightslategrey;
+        }
+        select{
+            height: 40px; /* Adjust the height as needed */
+            font-size: 18px; /* Adjust the font size as needed */
+            padding: 5px; /* Add some padding for better appearance */
+            border-color: rgb(234, 158, 58);
+            border-width: 3px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <img style="display: block; margin-left: auto; margin-right: auto;" src="logo_new.png"> <!--logo image-->
+    </header>
+    <button onclick="window.location.href='services.html'">Back</button>
+    <section>
+        <div class="container" style="top: 20%; left: 8%; position: absolute;">
+            <div class="row">
+                <div class="col-sm-4" style="flex-basis: 50%; border-style: dashed; padding: 10px;  margin-bottom: 20px;">
+                    <h2>Select Type of insurance:</h2>
+
+                    <!-- The <select> element defines the dropdown list -->
+                    <select id="insurance">
+                        <!-- The <option> elements define the options within the list -->
+                        <option value="Term Life Insurance">Term Life</option>
+                        <option value="Whole Life Insurance">Whole Life</option>
+                        <option value="Individual Health Insurance">Individual Health</option>
+                        <option value="Family Health Insurance">Family Health</option>
+                    </select>
+
+                    <h2>Gender: </h2>
+                    <!-- The <input> element with type="checkbox" creates the checkbox -->
+                    <input type="checkbox" id="gender1" name="gender" value="Male">
+                    <label for="gender1">Male</label><br>
+
+                    <!-- The <input> element with type="checkbox" creates the checkbox -->
+                    <input type="checkbox" id="gender2" name="gender" value="Female">
+                    <label for="gender2">Female</label><br>
+
+                    <h2>Smoking: </h2>
+
+                    <!-- The <input> element with type="checkbox" creates the checkbox -->
+                    <input type="checkbox" id="smokingCheckbox1" name="status" value="No">
+                    <label for="smokingCheckbox1">No</label><br>
+
+                    <!-- The <input> element with type="checkbox" creates the checkbox -->
+                    <input type="checkbox" id="smokingCheckbox2" name="status" value="Yes">
+                    <label for="smokingCheckbox2">Yes</label><br>
+
+                    <!-- The <input> element with type="date"-->
+                    <label for="dob">Date of Birth:</label>
+                    <input onmouseleave="displayDate()" type="date" id="dob" name="dob">
+
+                </div>
+
+                <div class="col-sm-4" style="background-color: lightblue; flex-basis: 40%; border-style: dashed; padding: 10px;  margin-bottom: 20px;">
+                    <p>Selected insurance type: <b><span id="selected-insurance"></span></b></p>
+                    <p>Gender: <b><span id="selected-gender"></span></b></p>
+                    <p>Smoking status: <b><span id="selected-smoking"></span></b></p>
+                    <p>Date of birth: <b><span id="selectedDOB"></span></b></p>
+                </div>
+                <button onclick="displaynotes()">Confirm & Submit</button>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        function displaynotes(){
+            alert("This online platform is for you to purchase insurance plans based on your own selection and without any financial advice. Do note that not all our plans are available on this platform. The information and descriptions on this platform are provided solely for general informational purposes and do not constitute any financial advice. It does not have regard to the specific investment objectives, financial situation and particular needs of any persons. Do contact us if you wish to receive any assistance.")
+            location.href = "Payment.html";
+        }
+    </script>
+    <script>
+        // JavaScript to display the selected insurance type
+        const fruitsDropdown = document.getElementById("insurance");
+        const selectedFruitDisplay = document.getElementById("selected-insurance");
+
+        fruitsDropdown.addEventListener("change", function() {
+            selectedFruitDisplay.textContent = fruitsDropdown.value;
+
+        });
+    </script>
+
+    <script>
+        function displayDate(){
+            const DOB = document.getElementById("dob");
+            const selectedDOB = document.getElementById("selectedDOB");
+
+            // Get the value (selected date) from the input field
+            const selectedDate = DOB.value;
+
+            // Display the selected date in the specified format
+            selectedDOB.textContent = selectedDate;
+
+            if (date > 2006){
+                DOB.style.display = 'none';
+            }
+            else{
+                DOB.style.display = 'list-item';
+            }
+        }
+        
+    </script>
+
+    <ul id="selected-smoking"></ul>
+    <script>
+        // JavaScript to handle selected smoking status
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const selectedSmokeList = document.getElementById("selected-smoking");
+    
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener("change", function() {
+                displaySelectedSmoke();
+            });
+        });
+        function displaySelectedSmoke() {
+            const selectedStatusButton = document.querySelector('input[name="status"]:checked');
+            if (selectedStatusButton) {
+                selectedSmokeList.textContent = selectedStatusButton.value;
+            }
+        }
+    </script>
+
+    <ul id="selected-gender"></ul>
+    <script>
+        // JavaScript to handle selected smoking status
+        const checkbox = document.querySelectorAll('input[type="checkbox"]');
+        const selectedGender = document.getElementById("selected-gender");
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener("change", function() {
+                displaySelectedGender();
+            });
+        });
+        function displaySelectedGender() {
+            const selectedStatusButton = document.querySelector('input[name="gender"]:checked');
+            if (selectedStatusButton) {
+                selectedGender.textContent = selectedStatusButton.value;
+            }
+        }
+    </script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+</body>
+</html>

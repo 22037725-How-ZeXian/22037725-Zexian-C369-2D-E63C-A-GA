@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color:snow;
+        }
+        form{
+            margin: auto;
+            width: 25%;
+            border: 3px solid lightslategrey;
+        }
+        /* Apply some basic styles to the labels to create alignment */
+        label {
+          display: inline-block;
+          width: 70px; /* Adjust this value based on your label width */
+          text-align: left;
+          margin-left: 10px;
+        }
+
+        /* Adjust input styles as needed */
+        input {
+          width: 200px; /* Adjust this value based on your input width */
+        } 
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo_new.png"> <!--logo image-->
+        
+    </header>
+    <h1 style="text-align: center;">Login</h1>
+    <form action="index.html">
+        <br><br>
+        <label for="uname">UserName: </label>
+        <input type="text" id="uname" name="uname" required><br><br>
+        <label for="pwd">Password: </label>
+        <input type="password" id="pwd" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+        title="Password did not match / It doesnt match the requirements" required><br><br>
+        <input type="Submit" value="Login"><br>
+        <a href="ForgetPassword.html">Forget password?</a><br>
+        <a href="SignUp.html">New User?</a><br><br>
+    </form>
+</body>
+</html>

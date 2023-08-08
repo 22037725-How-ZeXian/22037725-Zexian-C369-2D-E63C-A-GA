@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color:snow;
+        }
+        .payment-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .error-message{
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="payment-form">
+        <h2>Payment Details</h2>
+        <form onsubmit="return checkForm();" action="thankyou.html">
+            <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+            </div>
+            <div class="form-group">
+                <label for="expiration">Expiration Date</label>
+                <input type="text" id="expiration" name="expiration" placeholder="MM/YY" required>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="password" id="cvv" name="cvv" placeholder="123" required>
+                <div class="error-message" id="cvvError"></div>
+            </div>
+            <div class="form-group">
+                <label for="name">Cardholder Name</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required>
+            </div>
+            <input type="submit" value="Pay Now">
+        </form>
+    </div>
+    <script>
+        function checkForm() {
+            const cardNumber = document.getElementById("cardNumber").value;
+            const expiration = document.getElementById("expiration").value;
+            const cvv = document.getElementById("cvv").value;
+            const name = document.getElementById("name").value;
+
+            const cvvError = document.getElementById("cvvError");
+            cvvError.textContent  = "";
+            if (cardNumber === "" || expiration === "" || cvv === "" || name === "") {
+                alert("Please fill in all fields.");
+                return false; // Prevent form submission
+            }
+            else if(cvv.length !== 3){
+                // Validate length
+                cvvError.textContent = "Only 3 digit for CVV";
+                return false;
+            }
+            else{
+                alert("PAYMENT SUCCESS !!!");
+            }
+            
+            
+        }
+        
+    </script>
+</body>
+</html>

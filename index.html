@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+ I declare that this code was written by me. 
+ I will not copy or allow others to copy my code. 
+ I understand that copying code is considered as plagiarism.
+ 
+ Student Name: HOW ZE XIAN
+ Student ID: 22037725
+ Class: C369-2D-E63C-A
+ Date/Time Last modified:
+    -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trustify</title> <!--tab name-->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color:snow;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color:snow;
+            margin-right: 30px;
+        } 
+        nav a {
+            text-decoration: none;
+            color: black;
+            padding: 35px 20px;
+        }
+        .mySlides {display: none}
+        
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width:max-content;
+            position:relative;
+            size: auto;
+            margin: auto;
+            min-height: 10vh;
+            padding: 20px;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+        background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Caption text */
+        .text {
+        color: black;
+        font-size: 20px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+        }
+
+        /* Number text (1/2 etc) */
+        .numbertext {
+        color: black;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        text-align: center;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+        background-color: #717171; /* select dot color (darker)*/
+        }
+
+        /* Fading animation */
+        .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+        }
+        /* a set of keyframes for an animation called fade*/
+        @keyframes fade {
+        from {opacity: .4} /* Starting opacity of the element (40% transparent) */
+        to {opacity: 1} /* Ending opacity of the element (100% opaque) */
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+        .prev, .next,.text {font-size: 11px}
+        }
+
+        .big-button {
+            padding: 20px 40px;
+            font-size: 20px;
+            border-radius: 8px;
+            border-color: coral;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+
+</style>
+     
+</head>
+<body>
+    <header>
+        <img src="logo_new.png"><!--logo image-->
+        <nav>
+            <a href="index.html">Home</a> <!-- link to go to home page-->
+            <a href="services.html">Service</a> <!-- link to go to service page-->
+            <a href="Aboutus.html">About Us</a> <!-- link to go to about us page-->
+            <a href="Login.html"><img src="loginLogo.png"></a>
+        </nav>
+    </header>
+    <!-- Slideshow container -->
+    <h3 style="color: red; text-align: center; font-family: 'Times New Roman'; background-color:lightsalmon;">Be aware of suspicious link and do not click on the link which is suspicious!!</h3>
+
+    <div class="slideshow-container">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+            <a href="services.html"><img src="Caring_img.jpg" style="height:400px; width:1100px; vertical-align: middle;"></a>
+            <div class="text">LIFE INSURANCE</div>
+            <div class="numbertext">1 / 2</div>
+        </div>
+    
+        <div class="mySlides fade">
+            <a href="services.html"><img src="caring_for_loved_one_heart.png" style="height:400px; width:1100px; vertical-align: middle;"></a>
+            <div class="text">HEALTH INSURANCE</div>
+            <div class="numbertext">2 / 2</div>
+        </div>
+    
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+    <script>
+        // default slide will be page 1
+        let slideIndex = 1; 
+        showSlides(slideIndex);
+        
+        // n is the slide number
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+        
+        // 'n' is the slide number to be displayed
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+          // check if value 'n' greater that the total number of slides (slide.length), if 'n' is greater 'slideIndex' will set to 1 
+          if (n > slides.length) {slideIndex = 1} // 'slideIndex' is to track the current slide displaying
+          // checks if n is less than 1. If n is less, it sets slideIndex to the index of the last slide (slides.length).
+          if (n < 1) {slideIndex = slides.length}
+          // It loops through all slides and sets their display style to "none", effectively hiding all the slides.
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+          }
+          // It loops through all navigation dots and removes the "active" class from their class name. The "active" class is typically used to highlight the currently active slide's navigation dot.
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";  // displays the slide with the index slideIndex-1 (since array indices are 0-based) by setting its display style to "block", making it visible.
+          dots[slideIndex-1].className += " active"; // adds the "active" class to the navigation dot corresponding to the current slide, so it appears highlighted.
+        }
+    </script>
+    <h1 style="text-align: center;">Send an enquiry</h1>
+    <a href="mailto:22037725@myrp.edu.sg?subject=Report%20About%20Fraud%20and%20Security%20Issue"><button class="big-button">Report Fraud, Security Issue</button></a>
+    <a href="mailto:22037725@myrp.edu.sg?subject=Account%20/%20Personal%20Data"><button class="big-button">My Account / Personal Data</button></a>
+    <a href="mailto:22037725@myrp.edu.sg?subject=Feedback"><button class="big-button">Feedback</button></a>
+    <a href="mailto:22037725@myrp.edu.sg?subject=Policy%20/%20Product%20Enquiry"><button class="big-button">Policy / Product enquiry</button></a>
+</body>
+
+</html>
