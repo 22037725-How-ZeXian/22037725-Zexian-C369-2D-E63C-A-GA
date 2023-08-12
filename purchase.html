@@ -54,7 +54,7 @@
                     <h2>Select Type of insurance:</h2>
 
                     <!-- The <select> element defines the dropdown list -->
-                    <select id="insurance">
+                    <select id="insurance" >
                         <!-- The <option> elements define the options within the list -->
                         <option value="Term Life Insurance">Term Life</option>
                         <option value="Whole Life Insurance">Whole Life</option>
@@ -63,22 +63,22 @@
                     </select>
 
                     <h2>Gender: </h2>
-                    <!-- The <input> element with type="checkbox" creates the checkbox -->
-                    <input type="checkbox" id="gender1" name="gender" value="Male">
+                    <!-- The <input> element with type="radio" creates the checkbox -->
+                    <input type="radio" id="gender1" name="gender" value="Male">
                     <label for="gender1">Male</label><br>
 
-                    <!-- The <input> element with type="checkbox" creates the checkbox -->
-                    <input type="checkbox" id="gender2" name="gender" value="Female">
+                    <!-- The <input> element with type="radio" creates the checkbox -->
+                    <input type="radio" id="gender2" name="gender" value="Female">
                     <label for="gender2">Female</label><br>
 
                     <h2>Smoking: </h2>
 
-                    <!-- The <input> element with type="checkbox" creates the checkbox -->
-                    <input type="checkbox" id="smokingCheckbox1" name="status" value="No">
+                    <!-- The <input> element with type="radio" creates the checkbox -->
+                    <input type="radio" id="smokingCheckbox1" name="status" value="No" >
                     <label for="smokingCheckbox1">No</label><br>
 
-                    <!-- The <input> element with type="checkbox" creates the checkbox -->
-                    <input type="checkbox" id="smokingCheckbox2" name="status" value="Yes">
+                    <!-- The <input> element with type="radio" creates the checkbox -->
+                    <input type="radio" id="smokingCheckbox2" name="status" value="Yes" >
                     <label for="smokingCheckbox2">Yes</label><br>
 
                     <!-- The <input> element with type="date"-->
@@ -100,17 +100,29 @@
     
     <script>
         function displaynotes(){
-            alert("This online platform is for you to purchase insurance plans based on your own selection and without any financial advice. Do note that not all our plans are available on this platform. The information and descriptions on this platform are provided solely for general informational purposes and do not constitute any financial advice. It does not have regard to the specific investment objectives, financial situation and particular needs of any persons. Do contact us if you wish to receive any assistance.")
-            location.href = "Payment.html";
+            const insuranceDropdown = document.getElementById("insurance");
+            const DOB = document.getElementById("dob");
+            const gender = document.getElementsByName("gender");
+            const smokingStatus = document.getElementsByName("status");
+            if (document.querySelector('input[name="gender"]:checked') && document.querySelector('input[name="status"]:checked')) {
+
+                alert("This online platform is for you to purchase insurance plans based on your own selection and without any financial advice. Do note that not all our plans are available on this platform. The information and descriptions on this platform are provided solely for general informational purposes and do not constitute any financial advice. It does not have regard to the specific investment objectives, financial situation and particular needs of any persons. Do contact us if you wish to receive any assistance.")
+                location.href = "Payment.html";
+            }
+            else{
+                alert("Please fill in all fields.");
+                return false;
+            }
+            
         }
     </script>
     <script>
         // JavaScript to display the selected insurance type
-        const fruitsDropdown = document.getElementById("insurance");
-        const selectedFruitDisplay = document.getElementById("selected-insurance");
+        const insuranceDropdown = document.getElementById("insurance");
+        const selectedInsuranceDisplay = document.getElementById("selected-insurance");
 
-        fruitsDropdown.addEventListener("change", function() {
-            selectedFruitDisplay.textContent = fruitsDropdown.value;
+        insuranceDropdown.addEventListener("change", function() {
+            selectedInsuranceDisplay.textContent = insuranceDropdown.value;
 
         });
     </script>
@@ -120,30 +132,26 @@
             const DOB = document.getElementById("dob");
             const selectedDOB = document.getElementById("selectedDOB");
 
-            // Get the value (selected date) from the input field
+           // Get the value (selected date) from the input field
             const selectedDate = DOB.value;
 
             // Display the selected date in the specified format
             selectedDOB.textContent = selectedDate;
-
-            if (date > 2006){
-                DOB.style.display = 'none';
-            }
-            else{
-                DOB.style.display = 'list-item';
+            const selectedYear = new Date(selectedDate).getFullYear();
+            if (selectedYear > 2006) {
+                alert("Please enter a valid year");
             }
         }
-        
     </script>
 
     <ul id="selected-smoking"></ul>
     <script>
         // JavaScript to handle selected smoking status
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const radiobutton = document.querySelectorAll('input[type="radio"]');
         const selectedSmokeList = document.getElementById("selected-smoking");
     
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener("change", function() {
+        radiobutton.forEach(radio => {
+            radio.addEventListener("change", function() {
                 displaySelectedSmoke();
             });
         });
@@ -158,11 +166,11 @@
     <ul id="selected-gender"></ul>
     <script>
         // JavaScript to handle selected smoking status
-        const checkbox = document.querySelectorAll('input[type="checkbox"]');
+        const radio = document.querySelectorAll('input[type="radio"]');
         const selectedGender = document.getElementById("selected-gender");
 
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener("change", function() {
+        radio.forEach(radio => {
+            radio.addEventListener("change", function() {
                 displaySelectedGender();
             });
         });
